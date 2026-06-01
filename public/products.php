@@ -11,7 +11,17 @@
         <input type="text" name="search" placeholder="Buscar producto..." value="<?php echo htmlspecialchars($_GET['search'] ?? ''); ?>" class="px-3-py-1 border-base rounded-sm outline-none">
         <button type="submit" class="btn">Buscar</button>
       </form>
-      <button class="btn secondary">Familias</button>
+        <form method="GET" action="index.php" class="d-flex gap-2 m-0">
+            <select name="category" class="px-3 py-1 rounded-sm">
+                <option value="" selected="selected">Seleccione categoria...</option>
+                <?php $categorias = Producto::getCategorias();
+                foreach ($categorias as $categoria) { ?>
+                    <option value="<?= $categoria ?>"><?= $categoria ?></option>
+                <?php } ?>
+            </select>
+            <button class="btn secondary">Familias</button>
+        </form>
+
       <a href="index.php?page=products" class="btn pill green text-decoration-none d-flex align-center px-3">Mostrar Todo</a>
       <a href="index.php?page=create_product" class="btn secondary text-decoration-none d-flex align-center px-3">Nuevo producto</a>
     </section>
@@ -33,9 +43,23 @@
         <tbody>
           <?php
           $busqueda = trim($_GET['search'] ?? '');
+          $categoria = trim($_GET['category'] ?? '');
           if ($busqueda !== '') {
               $productos = Producto::buscarProductos($busqueda);
-          } else {
+          } elseif ($categoria !== '') {
+              switch ($categoria) {
+                  case 'flor':
+                      $productos = Flor::buscarProductos($categoria);
+                      break;
+                  case 'planta':
+                      $productos =  Planta::buscarProductos($categoria);
+                      break;
+                  case 'accesorio':
+                      $productos = Accesorio::buscarProductos($categoria);
+                      break;
+              }
+              $productos = Producto::buscarProductos($categoria);
+          } else{
               $productos = Producto::getProductos();
           }
           

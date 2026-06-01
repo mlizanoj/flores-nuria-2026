@@ -1,6 +1,6 @@
 <?php
 
-class Accesorios extends Producto
+class Accesorio extends Producto
 {
     private $tamano;
     private $material;
@@ -25,7 +25,10 @@ class Accesorios extends Producto
     /********************************** METODOS *****************************************/
     /************************************************************************************/
 
-    public static function getAccesorios(): array{
+    /**
+     * @return array
+     */
+    public static function getProductos(): array{
         $conn = BD::FloresNuria();
         $stmt = $conn->prepare("SELECT p.*, a.* FROM producto p 
             RIGHT JOIN accesorios a ON p.id_producto = a.producto_id WHERE p.categoria = ?");

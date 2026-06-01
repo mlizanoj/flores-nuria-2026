@@ -29,7 +29,7 @@ class Planta extends Producto
     /********************************** METODOS *****************************************/
     /************************************************************************************/
 
-    public static function getPlantas(): array{
+    public static function getProductos(): array{
         $conn = BD::FloresNuria();
         $stmt = $conn->prepare("SELECT p.*, pl.* FROM producto p 
             RIGHT JOIN plantas pl ON p.id_producto = pl.producto_id WHERE p.categoria = ?");

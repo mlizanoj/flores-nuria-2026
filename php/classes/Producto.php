@@ -154,4 +154,16 @@ class Producto
         return $stmt->rowCount() > 0;
     }
 
+    public static function getCategorias(): array{
+        $conn = BD::FloresNuria();
+        $stmt = $conn->prepare("SELECT DISTINCT categoria FROM producto");
+        $stmt->execute();
+        $categorias = array();
+        while ($row = $stmt->fetch(PDO::FETCH_OBJ)) {
+            $categorias[] = $row->categoria;
+        }
+        return $categorias;
+
+    }
+
 }

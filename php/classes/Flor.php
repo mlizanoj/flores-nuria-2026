@@ -29,7 +29,7 @@ class Flor extends Producto
     /********************************** METODOS *****************************************/
     /************************************************************************************/
 
-    public static function getFlores(): array{
+    public static function getProductos(): array{
         $conn = BD::FloresNuria();
         $stmt = $conn->prepare("SELECT p.*, f.* FROM producto p 
             RIGHT JOIN flores f ON p.id_producto = f.producto_id WHERE p.categoria = ?");
