@@ -164,7 +164,9 @@ class Ticket
     }
 
     /**
-     * NUEVO METODO: Recibe un JSON, lo decodifica y devuelve una instancia de Ticket
+     * Recibe un JSON, lo decodifica y devuelve una instancia de Ticket
+     * @param string $jsonString archivo json con la información de ticket
+     * @return array|null
      */
     public static function ticket_api_decode(string $jsonString)
     {
