@@ -6,8 +6,8 @@ class Flor extends Producto
     private $especie;
     private $fecha_corte;
 
-    public function __construct($idProducto, $nombre, $precio, $stock, $oferta, $iva, $color, $especie, $fecha_corte){
-        parent::__construct($idProducto, $nombre, $precio, $stock, $oferta, $iva);
+    public function __construct($idProducto, $nombre, $precio, $stock, $oferta, $iva, $categoria, $color, $especie, $fecha_corte){
+        parent::__construct($idProducto, $nombre, $precio, $stock, $oferta, $iva, $categoria);
         $this->color = $color;
         $this->especie = $especie;
         $this->fecha_corte = $fecha_corte;
