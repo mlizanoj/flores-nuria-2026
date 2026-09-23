@@ -1,5 +1,7 @@
 <?php
 
+use classes\Oferta;
+use classes\Producto;
 use PHPUnit\Framework\TestCase;
 
 class ProductoTest extends TestCase
